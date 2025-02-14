@@ -16,15 +16,19 @@ module.exports = {
     rules: [
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", {
-          loader: "sass-loader",  
-          options: {
-            sassOptions: {
-              quietDeps: true,
-              includePaths: [path.resolve(__dirname, "node_modules")],
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              sassOptions: {
+                quietDeps: true,
+                includePaths: [path.resolve(__dirname, "node_modules")],
+              },
             },
           },
-        },],
+        ],
       },
       {
         test: /\.js$/,
@@ -51,11 +55,11 @@ module.exports = {
       chunks: ["list", "main"],
       filename: "list.html",
     }),
-    // new HtmlWebpackPlugin({
-    //   template: "./edit.html",
-    //   chunks: ["edit", "main"],
-    //   filename: "edit.html",
-    // }),
+    new HtmlWebpackPlugin({
+      template: "./edit.html",
+      chunks: ["edit", "main"],
+      filename: "edit.html",
+    }),
   ],
   devServer: {
     static: "./dist",
